@@ -1,12 +1,12 @@
 module.exports = function(config) {
 
-  var appBase    = 'app/';      // transpiled app JS and map files
-  var appSrcBase = 'app/';      // app source TS files
-  var appAssets  = 'base/app/'; // component assets fetched by Angular's compiler
+  var appBase    = 'dist/src';      // transpiled app JS and map files
+  var appSrcBase = 'src/';      // app source TS files
+  var appAssets  = 'base/dist/src/'; // component assets fetched by Angular's compiler
 
   // Testing helpers (optional) are conventionally in a folder called `testing`
-  var testingBase    = 'testing/'; // transpiled test JS and map files
-  var testingSrcBase = 'testing/'; // test source TS files
+  var testingBase    = 'dist/tests/unit'; // transpiled test JS and map files
+  var testingSrcBase = 'tests/unit'; // test source TS files
 
   config.set({
     basePath: '',
@@ -82,7 +82,7 @@ module.exports = function(config) {
     // Proxied base paths for loading assets
     proxies: {
       // required for component assets fetched by Angular's compiler
-      "/app/": appAssets
+       "src/": "http://localhost:3000/"
     },
 
     exclude: [],
@@ -91,7 +91,7 @@ module.exports = function(config) {
 
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false
