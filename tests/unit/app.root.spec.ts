@@ -1,5 +1,5 @@
 
-import { RootComponent }  from '../../src/components/app-root/root.component';
+import { RootComponent }  from '../../src/components/app-root/root.component.js';
 
 describe("Component: RootComponent", function() {
   it("should have name", function() {
