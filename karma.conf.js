@@ -6,7 +6,7 @@ module.exports = function(config) {
   // Testing helpers (optional) are conventionally in a folder called `testing`
   var testingBase    = 'dist/tests/unit'; // transpiled test JS and map files
   var testingSrcBase = 'tests/unit'; // test source TS files
-
+  var browsers = config.browsers.length === 0 ? ['PhantomJS'] : config.browsers
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
@@ -14,6 +14,7 @@ module.exports = function(config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-phantomjs-launcher'),
       require('karma-jasmine-html-reporter')
     ],
 
@@ -33,6 +34,7 @@ module.exports = function(config) {
 
     files: [
       // System.js for module loading
+      'node_modules/systemjs/dist/system-polyfills.js',
       'node_modules/systemjs/dist/system.src.js',
 
       // Polyfills
@@ -80,7 +82,7 @@ module.exports = function(config) {
     // Proxied base paths for loading assets
     proxies: {
       // required for component assets fetched by Angular's compiler
-  
+
     },
 
     exclude: [],
@@ -91,7 +93,7 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_DEBUG,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers:  browsers,
     singleRun: false
   })
 }
